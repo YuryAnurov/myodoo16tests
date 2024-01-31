@@ -3,5 +3,9 @@ env/
 mydocs/
 csls/
 drafts/
+**/__pycache__/
+setup.cfg
+odoo.conf
+.vscode/
 
 
