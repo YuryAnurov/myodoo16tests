@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<odoo>
+<record id="estate_type_view_form" model="ir.ui.view">
+    <field name="name">estate.property.type.tree</field>
+    <field name="model">estate.property.type</field>
+    <field name="arch" type="xml">
+        <form>
+            <field name="name"/>
+            <notebook>
+                <page string="Properties">            
+                    <field name="property_ids">
+                        <tree>
+                            <field name="name" string="Title"/>
+                            <field name="expected_price" string="Expected Price"/>
+                            <field name="state"/>
+                        </tree>
+                    </field>
+                </page>
+            </notebook>                    
+        </form>
+    </field>
+</record>
+</odoo>

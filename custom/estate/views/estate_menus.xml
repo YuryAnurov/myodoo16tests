@@ -1,0 +1,12 @@
+<odoo>
+<!-- в одном файле меню, причем удалены родитеслькие указания parent -->
+  <menuitem id="estate_menu_root" name="Real Estate">
+    <menuitem id="Estate_first_level_menu" name="Advertisements">
+      <menuitem id="estate_property_menu_action" name="Properties" action="estate_property_action"/>
+    </menuitem>
+    <menuitem id="Estatetype_first_level_menu" name="Settings">
+      <menuitem id="estate_property_type_menu_action" name="Property Types" action="estate_type_action"/>
+      <menuitem id="estate_property_tag_menu_action" name="Property Tags" action="tags_action"/>      
+    </menuitem>
+  </menuitem>
+</odoo>

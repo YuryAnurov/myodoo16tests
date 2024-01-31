@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<odoo>
+<data>
+<record id="view_estate_search" model="ir.ui.view">
+<field name="name">estate.property.search</field>
+<field name="model">estate.property</field>
+<field name="arch" type="xml">
+    <search string="Search Properties">
+        <field name="name"/>
+        <field name="property_type_id"/>        
+        <field name="postcode"/>
+        <field name="expected_price"/>
+        <field name="bedrooms"/>
+        <field name="living_area"/>
+        <field name="facades"/>
+        <filter name="available" string="Available" domain="[('date_availability', '&lt;=', context_today().strftime('%Y-%m-%d')), ('state', '=', 'new')]"/>        
+    </search>
+</field>
+</record>
+</data>
+</odoo>

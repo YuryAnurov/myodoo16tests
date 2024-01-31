@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="estate_view_form" model="ir.ui.view">
+        <field name="name">estate.property.form</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_set_sold" string="Sold" type="object" class="oe_highlight" attrs="{'invisible': [('state', 'in', ('cancelled', 'sold'))]}"/>
+                    <button name="action_set_cancel" string="Cancel" type="object" class="oe_highlight" attrs="{'invisible': [('state', 'in', ('cancelled', 'sold'))]}"/>
+                    <!-- <button name="action_set_sold" type="object" string="Sold" class="oe_highlight" attrs="{'invisible': [('state', 'in', ['cancelled', 'sold'])], 'class': [('state', '=', 'accepted') and 'btn btn-primary' or 'oe_highlight']}"/>                     -->            
+                    <!-- <button name="action_set_sold" type="object" string="Sold" class="oe_highlight" states="{'cancelled,sold': [('invisible', True)], 
+                            'accepted,new,refused': [('invisible', False)]}"/>                     -->
+                    <!-- , 'accepted': [('class', 'btn btn-primary')]                             -->
+                    <field name="state" widget="statusbar" statusbar_visible="new,received,accepted,sold"/>                    
+                </header>                
+                <sheet>
+                    <div class="o_form_sheet">
+                        <div class="oe_title">
+                            <h1 class="mb32">
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <group class="row">
+                                    <field name="tag_ids" widget="many2many_tags" string = "" options="{'color_field': 'color'}"/>
+                                    <!-- <field name="tag_ids" widget="many2many_tags" nolabel="1"  position="before(property_type_id)"/> -->
+                                    <!-- убрал, т.к. перенес в хедер и добавил статус -->
+                                    <!-- <field name="state"/> -->
+                                    <field name="property_type_id"/>
+                                    <field name="postcode"/>
+                                    <field name="date_availability"/>
+                                </group>
+                            </div>
+                            <div class="col-6">
+                                <group>
+                                    <field name="expected_price"/>
+                                    <field name="best_price"/>                                    
+                                    <field name="selling_price"/>
+                                </group>
+                            </div>
+                        </div>
+                        <field name="active" invisible="1"/>
+
+                        <notebook>
+                            <page string="Description">
+                                <group>
+                                      <field name="description"/>
+                                        <field name="bedrooms" class="o_stat_value"/>
+                                        <field name="living_area" class="o_stat_value"/>
+                                        <field name="facades" class="o_stat_value"/>                                     
+                                        <field name="garage"/>
+                                        <field name="garden"/>
+                                        <field name="garden_area"/>
+                                        <field name="garden_orientation"/>   
+                                        <field name="total_area"/>     
+                                </group>
+                            </page>
+                            <page string='Offers'>
+                                <group>
+                                    <field name="offer_ids" widget="one2many_list" view_id="estate.property.offer.tree">
+                                    <!-- view_id указывает на представление "estate.property.offer.tree" -->                                    
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Other Info">
+                                <group>
+                                    <field name="salesperson_id"/>
+                                    <field name="buyer_id"/>
+                                </group>
+                            </page>
+                        </notebook>
+
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
+
