@@ -14,7 +14,13 @@ class HospitalPatient(models.Model):
     gender = fields.Selection([('male', 'Male'), ('female', 'Female'), ('others', 'Others')],
                               string="Gender", tracking=True)
     capitalized_name = fields.Char(string='Capitalized Name', compute='_compute_capitalized_name', store=True)
+    ref = fields.Char(string="Reference", default=lambda self: _('New'))
 
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            vals['ref'] = self.env['ir.sequence'].next_by_code('hospital.patient')
+        return super(HospitalPatient, self).create(vals_list)
 
     @api.constrains('is_child', 'age')
     def check_child_age(self):
