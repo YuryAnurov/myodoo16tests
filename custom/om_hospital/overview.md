@@ -19,7 +19,7 @@ Commits content
 
     step4 - many2one, rec name, name get function, archive option, web ribbon, many2many 
     - Many2One Field In Odoo,  options="{'no_open': True, 'no_create': True}", Rec Name And Name Get Function, 
-    - Icon
+    - Icon added, can be .png or .svg 
     - Archive Option And Web Ribbon In Odoo (attrs="{'invisible': [('active', '=', True)]},
     ribbon colors - bg_color="bg-danger")
     - Many2many Field In Odoo (tags)
