@@ -9,5 +9,8 @@
                 parent="menu_hospital_root"
                 sequence="10"/>
 
-                               
+        <menuitem id="menu_hospital_master_data"
+                name="Master Data"
+                parent="menu_hospital_root"
+                sequence="10"/>
 </odoo>

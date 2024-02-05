@@ -15,6 +15,9 @@ class HospitalPatient(models.Model):
                               string="Gender", tracking=True)
     capitalized_name = fields.Char(string='Capitalized Name', compute='_compute_capitalized_name', store=True)
     ref = fields.Char(string="Reference", default=lambda self: _('New'))
+    doctor_id = fields.Many2one('hospital.doctor', string='Doctor')
+    tag_ids = fields.Many2many('res.partner.category', 'hospital_patient_tag_rel',
+                               'patient_id', 'tag_id', string="Tags")
 
     @api.model_create_multi
     def create(self, vals_list):
